@@ -7,7 +7,7 @@ app.config['SECRET_KEY'] = 'clave123'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///minicore.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
-# Inicializar DB
+# Inicializar SQLAlchemy
 db.init_app(app)
 
 # Rutas

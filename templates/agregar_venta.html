@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Agregar Venta</title>
+</head>
+<body>
+<h2>Agregar nueva venta</h2>
+<form method="POST" action="/agregar_venta_post">
+    <label>Vendedor:</label>
+    <select name="idusuario">
+        {% for u in usuarios %}
+            <option value="{{ u.idusuarios }}">{{ u.nombre }} {{ u.apellido }}</option>
+        {% endfor %}
+    </select><br><br>
+    <label>Monto:</label>
+    <input type="number" step="0.01" name="monto" required><br><br>
+    <label>Fecha:</label>
+    <input type="date" name="fecha" required><br><br>
+    <input type="submit" value="Agregar">
+</form>
+<a href="/">Volver</a>
+</body>
+</html>

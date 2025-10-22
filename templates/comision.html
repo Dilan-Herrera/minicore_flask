@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Reporte de Comisiones</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        h2 {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        table {
+            margin: 0 auto;
+            width: 80%;
+            border-collapse: collapse;
+        }
+        th, td {
+            text-align: center;
+            padding: 10px;
+            border: 1px solid #ddd;
+        }
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+        footer {
+            background-color: #f9f9f9;
+            padding: 15px;
+            text-align: center;
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+    <h2>Reporte de Comisiones</h2>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Total Ventas</th>
+                <th>Comisión</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for c in comision %}
+            <tr>
+                <td>{{ c.nombre }} {{ c.apellido }}</td>
+                <td>${{ "%.2f"|format(c.total_ventas) }}</td>
+                <td>${{ "%.2f"|format(c.comision) }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <div class="text-center mt-3">
+        <a href="/" class="btn btn-secondary">Volver al inicio</a>
+        <a href="/agregar_venta" class="btn btn-primary">Agregar nueva venta</a>
+    </div>
+
+    <footer>
+        <h5>Tu Nombre / Mini Core Ventas Flask</h5>
+    </footer>
+</body>
+</html>

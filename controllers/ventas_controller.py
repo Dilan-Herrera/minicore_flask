@@ -1,6 +1,7 @@
 from flask import render_template, request, redirect, url_for
 from models.usuario import Usuario
-from models.venta import Venta, db
+from models.venta import Venta
+from models import db
 from sqlalchemy.sql import func
 from datetime import datetime
 
@@ -44,7 +45,6 @@ def insertar_datos_de_prueba():
         db.session.add_all(ventas)
         db.session.commit()
 
-# Rutas relacionadas a ventas
 def mostrar_formulario_busqueda():
     return render_template('formulario_busqueda.html')
 

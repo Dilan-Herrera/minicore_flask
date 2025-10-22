@@ -4,6 +4,7 @@ from models.venta import Venta
 from models import db
 from sqlalchemy.sql import func
 from datetime import datetime, date
+from flask import flash
 
 # Función para calcular comisión según total de ventas
 def calcular_comision(total):
@@ -18,7 +19,7 @@ def calcular_comision(total):
     else:
         return 0
 
-# Insertar datos de prueba (con fechas como objetos date)
+# Insertar datos de prueba 
 def insertar_datos_de_prueba():
     if Usuario.query.count() == 0:
         usuarios = [
@@ -94,9 +95,11 @@ def agregar_venta():
     idusuario = int(request.form.get('idusuario'))
     monto = float(request.form.get('monto'))
     fecha_str = request.form.get('fecha')
-    fecha = datetime.strptime(fecha_str, "%Y-%m-%d").date()  # <-- aquí convertimos a date
+    fecha = datetime.strptime(fecha_str, "%Y-%m-%d").date()  
 
     nueva_venta = Venta(idusuario=idusuario, monto=monto, fecha=fecha)
     db.session.add(nueva_venta)
     db.session.commit()
-    return redirect(url_for('home'))
+    db.session.commit()
+    flash("Venta agregada correctamente", "success")
+    return redirect(url_for('mostrar_formulario_busqueda'))

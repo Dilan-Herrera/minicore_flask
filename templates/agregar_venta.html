@@ -2,22 +2,38 @@
 <html>
 <head>
     <title>Agregar Venta</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .container { max-width: 500px; margin: 0 auto; }
+        footer { background-color: #f9f9f9; padding: 20px; text-align: center; margin-top: 20px; }
+    </style>
 </head>
 <body>
-<h2>Agregar nueva venta</h2>
-<form method="POST" action="/agregar_venta_post">
-    <label>Vendedor:</label>
-    <select name="idusuario">
-        {% for u in usuarios %}
-            <option value="{{ u.idusuarios }}">{{ u.nombre }} {{ u.apellido }}</option>
-        {% endfor %}
-    </select><br><br>
-    <label>Monto:</label>
-    <input type="number" step="0.01" name="monto" required><br><br>
-    <label>Fecha:</label>
-    <input type="date" name="fecha" required><br><br>
-    <input type="submit" value="Agregar">
-</form>
-<a href="/">Volver</a>
+    <div class="container">
+        <h2 class="text-center mb-4">Agregar Nueva Venta</h2>
+        <form method="POST" action="/agregar_venta_post">
+            <div class="mb-3">
+                <label for="idusuario" class="form-label">Vendedor:</label>
+                <select class="form-select" id="idusuario" name="idusuario" required>
+                    {% for u in usuarios %}
+                        <option value="{{ u.idusuarios }}">{{ u.nombre }} {{ u.apellido }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="fecha" class="form-label">Fecha:</label>
+                <input type="date" class="form-control" id="fecha" name="fecha" required>
+            </div>
+            <div class="mb-3">
+                <label for="monto" class="form-label">Monto:</label>
+                <input type="number" step="0.01" class="form-control" id="monto" name="monto" required>
+            </div>
+            <button type="submit" class="btn btn-success w-100">Agregar Venta</button>
+        </form>
+    </div>
+    <footer>
+        <h4>MiniCore Ventas Flask</h4>
+    </footer>
 </body>
 </html>

@@ -100,6 +100,5 @@ def agregar_venta():
     nueva_venta = Venta(idusuario=idusuario, monto=monto, fecha=fecha)
     db.session.add(nueva_venta)
     db.session.commit()
-    db.session.commit()
     flash("Venta agregada correctamente", "success")
-    return redirect(url_for('mostrar_formulario_busqueda'))
+    return redirect(url_for('home'))
